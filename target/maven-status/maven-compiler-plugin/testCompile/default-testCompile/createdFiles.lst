@@ -1,0 +1,4 @@
+com\zensar\service\FileInputReaderImplTest.class
+com\zensar\dto\TrainDtoTest.class
+com\zensar\service\ParserImplTest.class
+com\zensar\service\TourImplTest.class

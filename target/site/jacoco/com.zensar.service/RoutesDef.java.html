@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RoutesDef.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">geektrust</a> &gt; <a href="index.source.html" class="el_package">com.zensar.service</a> &gt; <span class="el_source">RoutesDef.java</span></div><h1>RoutesDef.java</h1><pre class="source lang-java linenums">package com.zensar.service;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import com.zensar.dto.TrainDto;
+import com.zensar.utils.StationCodes;
+
+public interface RoutesDef {
+<span class="fc" id="L10">    static Map&lt;String, TrainDto&gt; A_TRAIN_ = new LinkedHashMap&lt;&gt;();</span>
+<span class="fc" id="L11">    static Map&lt;String, TrainDto&gt; B_TRAIN_ = new LinkedHashMap&lt;&gt;();</span>
+    public static void start(){
+<span class="fc" id="L13">        A_TRAIN_.put(StationCodes.CHN.name(), new TrainDto(StationCodes.CHN.name(), 0));</span>
+<span class="fc" id="L14">        A_TRAIN_.put(StationCodes.SLM.name(), new TrainDto(StationCodes.SLM.name(), 350));</span>
+<span class="fc" id="L15">        A_TRAIN_.put(StationCodes.BLR.name(), new TrainDto(StationCodes.BLR.name(), 550));</span>
+<span class="fc" id="L16">        A_TRAIN_.put(StationCodes.KRN.name(), new TrainDto(StationCodes.KRN.name(), 900));</span>
+<span class="fc" id="L17">        A_TRAIN_.put(StationCodes.HYB.name(), new TrainDto(StationCodes.HYB.name(),true, 1200));</span>
+<span class="fc" id="L18">        A_TRAIN_.put(StationCodes.NGP.name(), new TrainDto(StationCodes.NGP.name(),true, 1600));</span>
+<span class="fc" id="L19">        A_TRAIN_.put(StationCodes.ITJ.name(), new TrainDto(StationCodes.ITJ.name(),true, 1900));</span>
+<span class="fc" id="L20">        A_TRAIN_.put(StationCodes.BPL.name(), new TrainDto(StationCodes.BPL.name(),true, 2000));</span>
+<span class="fc" id="L21">        A_TRAIN_.put(StationCodes.AGA.name(), new TrainDto(StationCodes.AGA.name(),false,true, 2500));</span>
+<span class="fc" id="L22">        A_TRAIN_.put(StationCodes.NDL.name(), new TrainDto(StationCodes.NDL.name(),false,true, 2700));</span>
+
+<span class="fc" id="L24">        B_TRAIN_.put(StationCodes.TVC.name(), new TrainDto(StationCodes.TVC.name(), 0));</span>
+<span class="fc" id="L25">        B_TRAIN_.put(StationCodes.SRR.name(), new TrainDto(StationCodes.SRR.name(), 300));</span>
+<span class="fc" id="L26">        B_TRAIN_.put(StationCodes.MAQ.name(), new TrainDto(StationCodes.MAQ.name(), 600));</span>
+<span class="fc" id="L27">        B_TRAIN_.put(StationCodes.MAO.name(), new TrainDto(StationCodes.MAO.name(), 1000));</span>
+<span class="fc" id="L28">        B_TRAIN_.put(StationCodes.PNE.name(), new TrainDto(StationCodes.PNE.name(), 1400));</span>
+<span class="fc" id="L29">        B_TRAIN_.put(StationCodes.HYB.name(), new TrainDto(StationCodes.HYB.name(), true,2000));</span>
+<span class="fc" id="L30">        B_TRAIN_.put(StationCodes.NGP.name(), new TrainDto(StationCodes.NGP.name(), true,2400));</span>
+<span class="fc" id="L31">        B_TRAIN_.put(StationCodes.ITJ.name(), new TrainDto(StationCodes.ITJ.name(), true,2700));</span>
+<span class="fc" id="L32">        B_TRAIN_.put(StationCodes.BPL.name(), new TrainDto(StationCodes.BPL.name(), true,2800));</span>
+<span class="fc" id="L33">        B_TRAIN_.put(StationCodes.PTA.name(), new TrainDto(StationCodes.PTA.name(), false,true,3800));</span>
+<span class="fc" id="L34">        B_TRAIN_.put(StationCodes.NJP.name(), new TrainDto(StationCodes.NJP.name(),false, true,4200));</span>
+<span class="fc" id="L35">        B_TRAIN_.put(StationCodes.GHY.name(), new TrainDto(StationCodes.GHY.name(), false,true,4700));</span>
+<span class="fc" id="L36">    }</span>
+    public static int getTrain_Distance(String code, Map&lt;String, TrainDto&gt; map) {
+<span class="nc" id="L38">		return map.get(code).getDistance();</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

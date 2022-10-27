@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FileInputReaderImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">geektrust</a> &gt; <a href="index.source.html" class="el_package">com.zensar.service.impl</a> &gt; <span class="el_source">FileInputReaderImpl.java</span></div><h1>FileInputReaderImpl.java</h1><pre class="source lang-java linenums">package com.zensar.service.impl;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import com.zensar.service.FileInputReader;
+
+<span class="fc" id="L9">public class FileInputReaderImpl implements FileInputReader{</span>
+    @Override
+    public String[] inputReader(String relativePath) {
+<span class="fc" id="L12">		String[] input_data = new String[2];</span>
+<span class="fc" id="L13">		int i = 0;</span>
+<span class="fc" id="L14">		try (Scanner sc = new Scanner(new File(relativePath));) {</span>
+<span class="fc bfc" id="L15" title="All 2 branches covered.">			while (sc.hasNextLine()) {</span>
+<span class="fc" id="L16">				input_data[i] = sc.nextLine();</span>
+<span class="fc" id="L17">				i++;</span>
+			}
+<span class="fc" id="L19">			return input_data;</span>
+		} 
+<span class="nc" id="L21">        catch (FileNotFoundException e) {</span>
+<span class="nc" id="L22">			System.out.println(&quot;Error in reading the data from the file.&quot;);</span>
+<span class="nc" id="L23">			e.printStackTrace();</span>
+		}        
+<span class="nc" id="L25">        return null;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">geektrust</a> &gt; <a href="index.source.html" class="el_package">com.zensar</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package com.zensar;
+
+import java.util.List;
+
+import com.zensar.dto.TrainDto;
+import com.zensar.service.FileInputReader;
+import com.zensar.service.Tour;
+import com.zensar.service.Output;
+import com.zensar.service.Parser;
+import com.zensar.service.RoutesDef;
+import com.zensar.service.impl.FileInputReaderImpl;
+import com.zensar.service.impl.TourImpl;
+import com.zensar.service.impl.OutputImpl;
+import com.zensar.service.impl.ParserImpl;
+import com.zensar.utils.Constants;
+
+<span class="nc" id="L17">public class Main {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L19">        FileInputReader inputReader = new FileInputReaderImpl();</span>
+<span class="nc" id="L20">        Parser routeParser = new ParserImpl();</span>
+<span class="nc" id="L21">        Tour journey = new TourImpl();</span>
+<span class="nc" id="L22">        Output outputWriter = new OutputImpl();</span>
+<span class="nc" id="L23">        String trips[] = inputReader.inputReader(args[0]);</span>
+<span class="nc" id="L24">        List&lt;TrainDto&gt; trip_TrainA = routeParser.parse(trips[0], RoutesDef.A_TRAIN_, RoutesDef.B_TRAIN_);</span>
+<span class="nc" id="L25">        List&lt;TrainDto&gt; trip_TrainB = routeParser.parse(trips[1], RoutesDef.B_TRAIN_, RoutesDef.A_TRAIN_);</span>
+<span class="nc" id="L26">        List&lt;TrainDto&gt; arrival_TrainA = journey.arrival(trip_TrainA, RoutesDef.getTrain_Distance(Tour.INIITAL_MERGE_STATION,RoutesDef.A_TRAIN_));</span>
+<span class="nc" id="L27">        List&lt;TrainDto&gt; arrival_TrainB = journey.arrival(trip_TrainB, RoutesDef.getTrain_Distance(Tour.INIITAL_MERGE_STATION,RoutesDef.B_TRAIN_));</span>
+<span class="nc" id="L28">        List&lt;TrainDto&gt; departure_TrainAB = journey.departure(arrival_TrainA, arrival_TrainB);</span>
+<span class="nc" id="L29">        outputWriter.output(journey.arrivalPrefix(Constants.TRAIN_A), arrival_TrainA);</span>
+<span class="nc" id="L30">        outputWriter.output(journey.arrivalPrefix(Constants.TRAIN_B), arrival_TrainB);</span>
+<span class="nc" id="L31">        outputWriter.output(journey.departurePrefix(Constants.TRAIN_AB), departure_TrainAB);</span>
+<span class="nc" id="L32">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

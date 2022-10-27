@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ParserImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">geektrust</a> &gt; <a href="index.source.html" class="el_package">com.zensar.service.impl</a> &gt; <span class="el_source">ParserImpl.java</span></div><h1>ParserImpl.java</h1><pre class="source lang-java linenums">package com.zensar.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import com.zensar.dto.TrainDto;
+import com.zensar.service.Tour;
+import com.zensar.service.Parser;
+import com.zensar.utils.Constants;
+
+<span class="fc" id="L12">public class ParserImpl implements Parser{</span>
+    @Override
+    public List&lt;TrainDto&gt; parse(String input, Map&lt;String, TrainDto&gt; initial, Map&lt;String, TrainDto&gt; merged) {
+<span class="fc" id="L15">        List&lt;TrainDto&gt; train = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L16">		String[] compartments = input.split(Constants.SPACE);</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">		for (String compartment : compartments) {</span>
+<span class="pc bpc" id="L18" title="1 of 4 branches missed.">			if (merged.get(compartment) != null &amp;&amp; merged.get(compartment).isPartedStation())</span>
+<span class="nc" id="L19">				train.add(merged.get(compartment));</span>
+<span class="pc bpc" id="L20" title="3 of 6 branches missed.">			if (initial.get(compartment) != null &amp;&amp; merged.get(compartment) != null &amp;&amp; initial.get(compartment).getStationCode() != Tour.INIITAL_MERGE_STATION)</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">				if (initial.get(compartment).getDistance() &lt; merged.get(compartment).getDistance())</span>
+<span class="nc" id="L22">					train.add(initial.get(compartment));</span>
+				else
+<span class="nc" id="L24">					train.add(merged.get(compartment));</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">			else if (initial.get(compartment) != null) </span>
+<span class="fc" id="L26">				train.add(initial.get(compartment));</span>
+		}        
+<span class="fc" id="L28">		return train;</span>
+    }  
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
